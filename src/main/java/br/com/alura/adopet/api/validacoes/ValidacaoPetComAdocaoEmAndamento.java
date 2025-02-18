@@ -13,6 +13,8 @@ public class ValidacaoPetComAdocaoEmAndamento implements ValidacaoSolicitacaoAdo
     @Autowired
     private AdocaoRepository adocaoRepository;
 
+
+
     public void validar(SolicitacaoAdocaoDto dto) {
         boolean petTemAdocaoEmAndamento = adocaoRepository
                 .existsByPetIdAndStatus(dto.idPet(), StatusAdocao.AGUARDANDO_AVALIACAO);
