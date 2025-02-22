@@ -16,12 +16,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class ValidacaoTutorComAdocaoEmAndamentoTest {
 
-//    public void validar(SolicitacaoAdocaoDto dto) {
-//        Integer adocoesTutor = adocaoRepository.countByTutorIdAndStatus(dto.idTutor(), StatusAdocao.APROVADO);
-//        if (adocoesTutor == 5) {
-//            throw new ValidacaoException("Tutor chegou ao limite máximo de 5 adoções!");
-//        }
-//    }
     @InjectMocks
     private ValidacaoTutorComAdocaoEmAndamento validador;
 

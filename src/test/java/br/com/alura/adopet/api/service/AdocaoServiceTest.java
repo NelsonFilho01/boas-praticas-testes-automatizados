@@ -68,8 +68,6 @@ class AdocaoServiceTest {
 
     private SolicitacaoAdocaoDto dto;
 
-    private ReprovacaoAdocaoDto dto2;
-
     @Captor
     private ArgumentCaptor<Adocao> adocaoCaptor;
 
