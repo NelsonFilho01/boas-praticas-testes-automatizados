@@ -1,5 +1,7 @@
 package br.com.alura.adopet.api.service;
 
+import br.com.alura.adopet.api.dto.AprovacaoAdocaoDto;
+import br.com.alura.adopet.api.dto.ReprovacaoAdocaoDto;
 import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
 import br.com.alura.adopet.api.model.Abrigo;
 import br.com.alura.adopet.api.model.Adocao;
@@ -61,7 +63,12 @@ class AdocaoServiceTest {
     @Mock
     private Abrigo abrigo;
 
+    @Mock
+    private AdocaoService adocaoService;
+
     private SolicitacaoAdocaoDto dto;
+
+    private ReprovacaoAdocaoDto dto2;
 
     @Captor
     private ArgumentCaptor<Adocao> adocaoCaptor;
@@ -103,6 +110,7 @@ class AdocaoServiceTest {
         BDDMockito.then(validador2).should().validar(dto);
 
     }
+
 
 
 

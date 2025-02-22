@@ -15,7 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 
 @ExtendWith(MockitoExtension.class)
-class ValidacaoPetComAdocaoEmAndamentoTest {
+class ValidacaoPetComAdocaoEmAndamentoTest  {
 
     @InjectMocks
     private ValidacaoPetComAdocaoEmAndamento validacao;
@@ -35,4 +35,12 @@ class ValidacaoPetComAdocaoEmAndamentoTest {
 
     }
 
+    @Test
+    void validaPetIndisponivel() {
+        BDDMockito.given(adocaoRepository.existsByPetIdAndStatus(dto.idPet(), StatusAdocao.AGUARDANDO_AVALIACAO))
+                .willReturn(false);
+
+        Assertions.assertDoesNotThrow(() -> validacao.validar(dto));
+
+    }
 }

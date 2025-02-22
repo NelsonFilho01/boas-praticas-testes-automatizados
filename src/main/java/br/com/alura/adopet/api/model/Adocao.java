@@ -91,4 +91,5 @@ public class Adocao {
         this.status = StatusAdocao.REPROVADO;
         this.justificativaStatus = justificativa;
     }
+
 }
