@@ -25,6 +25,16 @@ class ValidacaoTutorComAdocaoEmAndamentoTest {
     @Mock
     private SolicitacaoAdocaoDto dto;
 
+
+    @Test
+    void validaPetIndisponivell() {
+        BDDMockito.given(adocaoRepository.existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO))
+                .willReturn(true);
+
+        Assertions.assertThrows(ValidacaoException.class, () -> validador.validar(dto));
+
+    }
+
     @Test
     void validaPetDisponivel() {
         BDDMockito.given(adocaoRepository.existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO))
@@ -33,15 +43,5 @@ class ValidacaoTutorComAdocaoEmAndamentoTest {
         Assertions.assertDoesNotThrow(() -> validador.validar(dto));
 
     }
-
-    @Test
-    void validaPetIndisponivell() {
-        BDDMockito.given(adocaoRepository.existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO))
-                .willReturn(false);
-
-        Assertions.assertThrows(ValidacaoException.class, () -> validador.validar(dto));
-
-    }
-
 
 }

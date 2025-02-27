@@ -93,19 +93,6 @@ class AbrigoControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-//    @Test
-//    void deveCarregarAbrigoPorNomeComSucesso() {
-//        when(abrigoRepository.findByNome("Abrigo Esperança")).thenReturn(Optional.of(abrigo));
-//        //doNothing().when(abrigoService).carregarAbrigo(String.valueOf());
-//
-//        when(abrigoRepository.findByNome("Abrigo Esperança"))
-//                .thenReturn(Optional.of(new Abrigo(new CadastroAbrigoDto("Abrigo Esperança", "(12)1927-2872","emai@email.com")))); // CORRETO!
-//
-//
-//        //assertNotNull(resultado);
-//        assertEquals(CadastroAbrigoDto.class, CadastroAbrigoDto);
-//    }
-
 
     @Test
     void deveRetornarListaDePetsDoAbrigoComSucesso() throws Exception {

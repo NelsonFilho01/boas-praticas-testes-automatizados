@@ -19,7 +19,7 @@ import static org.mockito.BDDMockito.given;
 class ValidacaoTutorComLimiteDeAdocoesTest {
 
     @InjectMocks
-    private ValidacaoTutorComAdocaoEmAndamento validador;
+    private ValidacaoTutorComLimiteDeAdocoes validador;
 
     @Mock
     private AdocaoRepository adocaoRepository;
@@ -30,16 +30,14 @@ class ValidacaoTutorComLimiteDeAdocoesTest {
 
     @Test
     void naoDeveriaPermitirSolicitacaoDeAdocaoTutorAtingiuLimiteDe5Adocoes() {
+        given(adocaoRepository.countByTutorIdAndStatus(dto.idTutor(), StatusAdocao.APROVADO)).willReturn(6);
 
-        given(adocaoRepository.countByTutorIdAndStatus(dto.idTutor(), StatusAdocao.APROVADO)).willReturn(5);
 
-
-        assertThrows(ValidacaoException.class,() ->validador.validar(dto));
+        assertThrows(ValidacaoException.class,() -> validador.validar(dto));
     }
 
     @Test
     void deveriaPermitirSolicitacaoDeAdocaoTutorNaoAtingiuLimiteDe5Adocoes() {
-        //Arrange
         given(adocaoRepository.countByTutorIdAndStatus(dto.idTutor(),StatusAdocao.APROVADO)).willReturn(1);
 
 

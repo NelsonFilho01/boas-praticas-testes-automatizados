@@ -29,18 +29,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(MockitoExtension.class)
-@WebMvcTest(PetController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
 class PetControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
-
-    @BeforeEach
-    void setup() {
-        Mockito.reset(service); // Garante que o mock está limpo antes de cada teste
-    }
     @MockBean
     private PetService service;
 
